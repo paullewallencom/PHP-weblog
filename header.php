@@ -1,6 +1,5 @@
 <?php
 require("config.php");
-
 $db = mysql_connect($dbhost, $dbuser, $dbpassword);
 mysql_select_db($dbdatabase, $db);
 
@@ -12,7 +11,7 @@ mysql_select_db($dbdatabase, $db);
 <html>
 <head>
     <title><?php echo $config_blogname; ?></title>
-    <link rel="stylesheet" href="css/stylesheet.css" type="text/css" />
+    <link rel="stylesheet" href="_css/stylesheet.css" type="text/css" />
 </head>
 <body>
 <div id="header">
