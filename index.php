@@ -8,5 +8,10 @@ LIMIT 1;";
 $result = mysql_query($sql);
 $row = mysql_fetch_assoc($result);
 
+echo "<h2><a href='viewentry.php?id=" . $row['id']
+        . "'>" . $row['subject'] .
+        "</a></h2><br />";
+echo "<i>In <a href='viewcat.php?id=" . $row['cat_id']
+
 require("footer.php");
 ?>
