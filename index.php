@@ -36,5 +36,23 @@ else {
     }
 }
 echo "</p>";
+$prevsql = "SELECT entries.*, categories.cat FROM entries, categories
+WHERE entries.cat_id = categories.id
+ORDER BY dateposted DESC
+LIMIT 1, 5;";
+$prevresult = mysql_query($prevsql);
+$numrows_prev = mysql_num_rows($prevresult);
+if($numrows_prev == 0) {
+    echo "<p>No previous entries.</p>";
+}
+else {
+    echo "<ul>";
+    while($prevrow = mysql_fetch_assoc($prevresult)) {
+        echo "<li><a href='viewentry.php?id="
+                . $prevrow['id'] . "'>" . $prevrow ['subject']
+                . "</a></li>";
+    }
+}
+echo "</ul>";
 require("footer.php");
 ?>
