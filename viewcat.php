@@ -1,5 +1,8 @@
 <?php
 require("config.php");
+session_start();
+$db = mysql_connect($dbhost, $dbuser, $dbpassword);
+mysql_select_db($dbdatabase, $db);
 
 if(isset($_GET['id']) == TRUE) {
     if(is_numeric($_GET['id']) == FALSE) {
@@ -15,7 +18,8 @@ if(isset($_GET['id']) == TRUE) {
 }
 
 $sql = "SELECT * FROM categories;";
-$result = mysql_query($sql);
+
+$result = mysql_query($sql) or die(mysql_error());
 while($row = mysql_fetch_assoc($result)) {
     if($validcat == $row['id']) {
         echo "<strong>" . $row['cat'] . "</strong><br />";

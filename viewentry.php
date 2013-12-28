@@ -48,7 +48,7 @@ else {
             " ORDER BY dateposted DESC LIMIT 1;";
 }
 
-$result = mysql_query($sql);
+$result = mysql_query($sql) or die(mysql_error());
 $row = mysql_fetch_assoc($result);
 echo "<h2>" . $row['subject'] . "</h2><br />";
 echo "<i>In <a href='viewcat.php?id=" . $row['cat_id'] ."'>" .
@@ -59,7 +59,7 @@ echo nl2br($row['body']);
 echo "</p>";
 $commsql = "SELECT * FROM comments WHERE blog_id = " . $validentry .
         " ORDER BY dateposted DESC;";
-$commresult = mysql_query($commsql);
+$commresult = mysql_query($commsql) or die(mysql_error());
 $numrows_comm = mysql_num_rows($commresult);
 if($numrows_comm == 0) {
     echo "<p>No comments.</p>";

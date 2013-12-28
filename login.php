@@ -7,7 +7,7 @@ mysql_select_db($dbdatabase, $db);
 if(isset($_POST['submit'])) {
     $sql = "SELECT * FROM logins WHERE username = '" . $_POST['username'] .
            "' AND password = '" . $_POST['password'] . "';";
-    $result = mysql_query($sql);
+    $result = mysql_query($sql) or die(mysql_error());
     $numrows = mysql_num_rows($result);
     if($numrows == 1) {
         $row = mysql_fetch_assoc($result);

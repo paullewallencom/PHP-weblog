@@ -21,7 +21,7 @@ echo "</p>";
 echo "<p>";
 $commsql = "SELECT name FROM comments WHERE blog_id = " . $row['id'] .
         " ORDER BY dateposted;";
-$commresult = mysql_query($commsql);
+$commresult = mysql_query($commsql) or die(mysql_error());
 $numrows_comm = mysql_num_rows($commresult);
 if($numrows_comm == 0) {
     echo "<p>No comments.</p>";
@@ -40,7 +40,7 @@ $prevsql = "SELECT entries.*, categories.cat FROM entries, categories
 WHERE entries.cat_id = categories.id
 ORDER BY dateposted DESC
 LIMIT 1, 5;";
-$prevresult = mysql_query($prevsql);
+$prevresult = mysql_query($prevsql) or die(mysql_error());
 $numrows_prev = mysql_num_rows($prevresult);
 if($numrows_prev == 0) {
     echo "<p>No previous entries.</p>";
