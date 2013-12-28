@@ -15,5 +15,6 @@
    $config_basedir = "http://127.0.0.1/_SandBox/PHP-weblog/";
 
    $error = 0;
-   
+
+   $validcat = 1;
 ?>
