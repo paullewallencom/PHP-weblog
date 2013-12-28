@@ -16,6 +16,23 @@ else {
     $validentry = 0;
 }
 
+///
+if(isset($_POST['Submit'])) {
+    $db = mysql_connect($dbhost, $dbuser, $dbpassword);
+    mysql_select_db($dbdatabase, $db);
+    $sql = "INSERT INTO comments(blog_id, dateposted,
+name, comment) VALUES(" .
+            $validentry . ", NOW(), '" . $_POST['name']
+            . "', '" . $_POST['comment'] . "');";
+    mysql_query($sql);
+    header("Location: http://" . $HTTP_HOST
+            . $SCRIPT_NAME . "?id=" . $validentry);
+}
+else {
+// code will go here
+}
+///
+
 require("header.php");
 
 if($validentry == 0) {
